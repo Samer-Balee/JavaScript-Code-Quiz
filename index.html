@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- start section -->
+    <section id = "time">
+        <div >
+            <a href="#" id="viewHighScore">View High Scores</a>
+        </div>
+        <div >
+            <p>Time: <span id="count"></span></p>
+        </div>
+        <div id="timesUp" style="display: none;">Time's Up!</div>
+    </section>
+
+    <main>
+        <!-- start quiz div -->
+        <div class="container">
+            <div id = "initial-state">   
+                <div id = "large-font">JavaScript code Quiz</div>
+                <p id = "quiz-details">Try to answere the following code-related questions within the time limit. Incorrect answeres will penalize your score time by ten seconds.</p>
+                <button id="start">Start Quiz</button>
+            </div>
+            <!-- questions div -->
+            <div id = "question-div" style="display: none;">
+                <div id = "question-content">
+                    <p id = "ask-question"></p>
+                    <p><button id="btn0"></button></p>
+                    <p><button id="btn1"></button></p>
+                    <p><button id="btn2"></button></p>
+                    <p><button id="btn3"></button></p>
+                    <hr id = "line" style="display: none;">
+                    <p id="show-ans-result" style="display: none;"></p>
+                 </div>
+            </div>
+            <!-- score result and initials div -->
+            <div id="answer-result" style="display: none;">
+                <div id = "score-title"></div>
+                
+                <h2 id = "score-sentence">Your final Score is <span id="final-score"></span></h2>
+                <form>
+                <p>Enter initial<input id= "initial-input" type="text" ><button id = "submit-button">Submit</button>
+                </form>
+            </div>
+            <!-- high score div -->
+            <div id = "highscores" style="display: none;">
+                <h2>Highscores</h2>
+                <div id = "highscores-list"></div>
+                <div>
+                    <button id = "back-button">Go Back</button>
+                    <button id = "clear-button">Clear highscores</button>
+                </div>
+            </div>
+        </div>
+    </main> 
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
