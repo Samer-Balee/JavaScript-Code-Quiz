@@ -14,7 +14,7 @@
             <a href="#" id="viewHighScore">View High Scores</a>
         </div>
         <div >
-            <p>Time: <span id="count"></span></p>
+            <p id = "time-header">Time: <span id="count"></span></p>
         </div>
         <div id="timesUp" style="display: none;">Time's Up!</div>
     </section>
@@ -43,21 +43,21 @@
             </div>
             <!-- score result and initials div -->
             <div id="score-section" style="display: none;">
-                <div id = "score-title"></div>
+                <div id = "score-title">All done!</div>
                 
-                <h2 id = "score-sentence">Your final Score is <span id="final-score"></span></h2>
+                <h2 id = "score-sentence">Your final Score is: <span id="final-score"></span></h2>
                 <form>
-                <p>Enter initial<input id= "initial-input" type="text" ><button id = "submit-button">Submit</button>
+                <p>Enter initial<input id= "initial-input" type="text" ><button id = "submit-button">Submit</button></p>
                 </form>
             </div>
             <!-- high score div -->
             <div id = "highscores" style="display: none;">
                 <h2>Highscores</h2>
                 <div id = "highscores-list"></div>
-                <div>
+                <p>
                     <button id = "back-button">Go Back</button>
                     <button id = "clear-button">Clear highscores</button>
-                </div>
+                </p>
             </div>
         </div>
     </main> 
