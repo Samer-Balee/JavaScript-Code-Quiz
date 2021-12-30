@@ -31,6 +31,7 @@ main {
    
 }
 
+
 #startBtn {
     font-size: 1.4em;
     background-color: #611a6f;
@@ -45,7 +46,7 @@ main {
 
 #large-font {
     font-size: 40px;
-    margin-left: 50px;
+    margin-left: 10px;
     
 }
 
@@ -99,4 +100,57 @@ main {
 
 #highscores-list {
     font-size: 1.2rem;
+}
+
+/* @media screen and (max-width: 1543) {
+    .container {
+    width: 50%;
+    }
+} */
+
+@media screen and (max-width: 1026)  {
+    .container {
+    width: 80%;
+    }
+    #large-font {
+        font-size: 30px;
+        margin-left: 10px;
+        }
+        #enter-initial {
+            margin-left: 5px;
+        }
+        #submit-button {
+        margin-top: 20px;
+        }
+        #initial-input {
+            margin-top: 33px;
+                
+            }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width:70%;
+        }
+        #enter-initial {
+        margin-top: 33px;
+            
+        }
+        
+}
+
+@media screen and (max-width: 376px) {
+    .container{
+    width:90%;
+    }
+    #large-font {
+    font-size: 30px;
+    margin-left: 10px;
+    }
+    #submit-button {
+    margin-top: 5px;
+    }
+    #initial-input {
+    margin-left: 2px;
+    }
 }

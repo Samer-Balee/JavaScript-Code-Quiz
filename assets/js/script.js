@@ -64,7 +64,7 @@ var questionIndex = 0;
 var totalTime;
 var timerCount;
 
-//function to start quiz and set timer
+//function to start quiz
 function startQuiz() {
     
     questionIndex = 0;
@@ -80,40 +80,45 @@ function startQuiz() {
 }
 
 function startTimer( resetTimer ) {
+    //condition to reset timer when clicking high score link
     if (resetTimer) {
         timeEl.textContent = '';
         clearInterval(totalTime);
+
     } else {
-    totalTime = setInterval(function () {
+
+        totalTime = setInterval(function () {
+
         timerCount--
         timeEl.textContent = timerCount;
-        if (timerCount >= 0) {
-            // Tests if win condition is met
-            if (questionIndex === allQuestions.length) {
-                // Clears interval and stops timer
-                clearInterval(totalTime);
-                quizFinish();
-            }
-        }
 
-        if (timerCount <= 0) {
-            // Clears interval
-            timerCount = 0;
-            timeEl.textContent = timerCount;
+        if (timerCount >= 0) {
+        //when last question showed clear interval and finish quiz
+        if (questionIndex === allQuestions.length) {
+             // Clears interval and stop timer
             clearInterval(totalTime);
             quizFinish();
-          }
+        }
+    }
+        //if time finish clear interval and finish quiz
+    if (timerCount <= 0) {
+           
+        timerCount = 0;
+        timeEl.textContent = timerCount;
+        clearInterval(totalTime);
+        quizFinish();
+        }
 
     }, 1000);
+    }
 }
-}
-// function to run questions and choices
+// function to run next question and choices
 function showQuestions() {
     
  question();
 
 }
-
+//function to add question and choices
 function question() {
     
     askQuestionEl.textContent = allQuestions[questionIndex].question;
@@ -134,12 +139,12 @@ function checkAnswer (answer) {
 
     if (allQuestions[questionIndex].correct === allQuestions[questionIndex].answers[answer]) {
         
-
+        //if answer is correct
         ansCheckEl.textContent = "Correct!"
         
         
     } else {
-
+        //if answer is wrong deduct 10 seconds
         timerCount -= 10;
 
         //timeEl.textContent = totalTime;
@@ -162,13 +167,13 @@ function checkAnswer (answer) {
         }, 1000);
     }
 }
-
+//run functions to check each answer
 function answer1() { checkAnswer(0);}
 function answer2() { checkAnswer(1);}
 function answer3() { checkAnswer(2);}
 function answer4() { checkAnswer(3);}
 
-
+//function when quiz end
 function quizFinish() {
     scoreSectionEl.setAttribute("style" , "display: block;");
     questionDivEl.setAttribute("style" , "display: none;");
