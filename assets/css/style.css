@@ -32,11 +32,11 @@ main {
 }
 
 #startBtn {
-    font-size: 1.2em;
+    font-size: 1.4em;
     background-color: #611a6f;
     color: #eee7e7;
     border: 1px solid black;
-  border-radius: 10%;
+  border-radius: 5px;
 }
 
 #quiz-details {
@@ -49,25 +49,54 @@ main {
     
 }
 
-/* #start {
-   display: block;
-  font-size: 1.5rem; 
-  background-color: #611a6f;
-  color: #eee7e7; 
-  margin-left: 150px;
-  border: 1px solid black;
-  border-radius: 10%;
-} */
+#score-title {
+    font-size: 2rem;
+}
 
 #time {
     padding: 10px;
 } 
 
-#question {
-    font-size: 1.5rem;
+#question-content {
+    font-size: 1.4rem;
     font-weight: bolder;
+}
+
+#question-content button {
+    font-size: 1.2rem;
+    background-color: #611a6f;
+    color: #eee7e7;
+    border: 1px solid black;
+  border-radius: 5px;
+
+}
+
+#enter-initial {
+    font-size: 1.4rem;
+    
+}
+
+#initial-input {
+    font-size: 1.4rem;
+    margin-left: 10px;
+}
+
+#submit-button , #back-button ,#clear-button {
+    font-size: 1.4rem;
+    background-color: #611a6f;
+    border-radius: 5px;
+    color: #eee7e7;
+    margin-left: 5px;
 }
 
 #show-ans-result {
     font-size: 1rem;
+} 
+
+#highscores {
+    font-size: 1.5rem;
+}
+
+#highscores-list {
+    font-size: 1.2rem;
 }

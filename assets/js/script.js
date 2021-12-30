@@ -13,11 +13,11 @@ var allQuestions = [
     answers: ["1- if = 5" , "2- if i = 5 then" , "3- if i == 5 then" , "4- if (i == 5)"],
     correct: "4- if (i == 5)",    },
     {
-    question: "How do you write Hello World in an alert box",
+    question: "How do you write Hello World in an alert box?",
     answers: ["1- alert('Hello World')" , "2- msg('Hello World')" , "3- alertBox('Hello World')" , "4- msgBox('Hello World')"],
     correct: "1- alert('Hello World')",    },
     {
-    question: "How can you add acomment in JavaScript",
+    question: "How can you add acomment in JavaScript?",
     answers: ["1- <!this is a comment>" , "2- //this is a comment" , "3- *this is a comment*" , "4- <--this is a comment-->"],
     correct: "2- //this is a comment",    },
 
@@ -172,7 +172,7 @@ function storeScores(event) {
         score: finalScoreSpanEl.textContent,
     };
 
-    console.log(userScore);
+    // console.log(userScore);
     scoresArray.push(userScore);
     //Stringify array to store in local storage
     var scoresArrayString = JSON.stringify(scoresArray);
@@ -185,6 +185,7 @@ function storeScores(event) {
 function showScores() {
 
     quizInitialEl.setAttribute("style" , "display: none;");
+    questionDivEl.setAttribute("style" , "display: none;");
     timeHeaderEl.setAttribute("style" , "display: none;");
     highscoresEl.setAttribute("style" , "display: none;");
     scoreSectionEl.setAttribute("style" , "display: none;");
@@ -195,15 +196,18 @@ function showScores() {
     if (savedScores === null) {
         return;
     }
-    console.log(savedScores);
+    // console.log(savedScores);
 
     var storedScores = JSON.parse(savedScores);
     
     for(var i = 0 ; i < storedScores.length ; i ++) {
-        console.log(storedScores[i].initials);
+
+        // console.log(storedScores[i].initials);
         var eachUserHighscoreEl = document.createElement("p");
-        eachUserHighscoreEl.innerHTML = storedScores[i].initials + ": " + storedScores[i].score;
+        eachUserHighscoreEl.innerHTML = "- " + storedScores[i].initials + ": " + storedScores[i].score;
+        eachUserHighscoreEl.setAttribute("style" , "background-color: #f7f1f2;")
         highscoresListEl.appendChild(eachUserHighscoreEl);
+        
     }
 
 }
