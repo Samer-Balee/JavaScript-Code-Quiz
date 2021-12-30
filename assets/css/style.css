@@ -17,9 +17,9 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
 }
 
 .container {
@@ -37,7 +37,7 @@ main {
     background-color: #611a6f;
     color: #eee7e7;
     border: 1px solid black;
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 #quiz-details {
@@ -68,7 +68,7 @@ main {
     background-color: #611a6f;
     color: #eee7e7;
     border: 1px solid black;
-  border-radius: 5px;
+    border-radius: 5px;
 
 }
 
@@ -102,15 +102,10 @@ main {
     font-size: 1.2rem;
 }
 
-/* @media screen and (max-width: 1543) {
-    .container {
-    width: 50%;
-    }
-} */
 
 @media screen and (max-width: 1026)  {
     .container {
-    width: 80%;
+        width: 80%;
     }
     #large-font {
         font-size: 30px;
@@ -141,16 +136,16 @@ main {
 
 @media screen and (max-width: 376px) {
     .container{
-    width:90%;
+        width:90%;
     }
     #large-font {
-    font-size: 30px;
-    margin-left: 10px;
+        font-size: 30px;
+        margin-left: 10px;
     }
     #submit-button {
-    margin-top: 5px;
+        margin-top: 5px;
     }
     #initial-input {
-    margin-left: 2px;
+        margin-left: 2px;
     }
 }
