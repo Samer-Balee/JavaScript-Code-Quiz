@@ -56,40 +56,56 @@ var backBtnEl = document.getElementById("back-button");
 var clearBtnEl = document.getElementById("clear-button");
 
 
-var correctAns = 0;
+
 var questionNember = 0;
 var scoreResult;
 var questionIndex = 0;
 
-var totalTime = 61;
+var totalTime;
+var timerCount;
 
 //function to start quiz and set timer
 function startQuiz() {
     
     questionIndex = 0;
-    totalTime = 60;
-    timeEl.textContent = totalTime;
     inputEl.textContent = "";
+    timerCount = 60
 
     quizInitialEl.setAttribute("style" , "display: none;");
     questionDivEl.setAttribute("style" , "display: block;");
 
-    var startTimer = setInterval(function() {
-        totalTime--;
-        timeEl.textContent = totalTime;
-        if(totalTime <= 0) {
+    showQuestions();
+    startTimer();
 
-            clearInterval(startTimer);
-            quizFinish();
-        
-            if (questionIndex < allQuestions.length - 1) {
+}
+
+function startTimer( resetTimer ) {
+    if (resetTimer) {
+        timeEl.textContent = '';
+        clearInterval(totalTime);
+    } else {
+    totalTime = setInterval(function () {
+        timerCount--
+        timeEl.textContent = timerCount;
+        if (timerCount >= 0) {
+            // Tests if win condition is met
+            if (questionIndex === allQuestions.length) {
+                // Clears interval and stops timer
+                clearInterval(totalTime);
                 quizFinish();
             }
         }
-    },1000);
 
-showQuestions();
+        if (timerCount <= 0) {
+            // Clears interval
+            timerCount = 0;
+            timeEl.textContent = timerCount;
+            clearInterval(totalTime);
+            quizFinish();
+          }
 
+    }, 1000);
+}
 }
 // function to run questions and choices
 function showQuestions() {
@@ -105,12 +121,11 @@ function question() {
     secondCoiceAnsEl.textContent = allQuestions[questionIndex].answers[1];
     thirdCoiceAnsEl.textContent = allQuestions[questionIndex].answers[2];
     forthCoiceAnsEl.textContent = allQuestions[questionIndex].answers[3];
-    //setTimeout(function(){
-        lineEl.setAttribute("style" , "display: none;");
-        ansCheckEl.setAttribute("style" , "display: none;");
-    //},1000)
     
+    lineEl.setAttribute("style" , "display: none;");
+    ansCheckEl.setAttribute("style" , "display: none;");
 }
+
 //after each question check answer
 function checkAnswer (answer) {
     
@@ -119,16 +134,15 @@ function checkAnswer (answer) {
 
     if (allQuestions[questionIndex].correct === allQuestions[questionIndex].answers[answer]) {
         
-        correctAns ++;
 
         ansCheckEl.textContent = "Correct!"
         
         
     } else {
 
-        totalTime -= 10;
+        timerCount -= 10;
 
-        timeEl.textContent = totalTime;
+        //timeEl.textContent = totalTime;
         ansCheckEl.textContent = "Wrong!";
         
         }
@@ -158,8 +172,7 @@ function answer4() { checkAnswer(3);}
 function quizFinish() {
     scoreSectionEl.setAttribute("style" , "display: block;");
     questionDivEl.setAttribute("style" , "display: none;");
-
-    finalScoreSpanEl.textContent = correctAns;
+    finalScoreSpanEl.textContent = timerCount;
 }
 //Function to store initials in local storage
 function storeScores(event) {
@@ -193,7 +206,7 @@ function storeScores(event) {
     //Stringify array to store in local storage
     var scoresArrayString = JSON.stringify(scoresArray);
     window.localStorage.setItem("high scores", scoresArrayString);
-    
+    inputEl.value = '';
     showScores();
 }
 
@@ -221,7 +234,7 @@ function showScores() {
 
         // console.log(storedScores[i].initials);
         var eachUserHighscoreEl = document.createElement("p");
-        eachUserHighscoreEl.innerHTML = "- " + storedScores[i].initials + ": " + storedScores[i].score;
+        eachUserHighscoreEl.innerHTML = (i+1) + "- " + storedScores[i].initials + ": " + storedScores[i].score;
         eachUserHighscoreEl.setAttribute("style" , "background-color: #f7f1f2;")
         highscoresListEl.appendChild(eachUserHighscoreEl);
         
@@ -241,6 +254,7 @@ storeScores(event);
 });
 
 highscoresEl.addEventListener("click" , function(event){
+    startTimer (true)
     showScores(event);
 });
 
@@ -249,7 +263,7 @@ backBtnEl.addEventListener("click" , function() {
     timeHeaderEl.setAttribute("style" , "display: block;");
     highscoresEl.setAttribute("style" , "display: block;");
     quizInitialEl.setAttribute("style" , "display: block;");
-    
+    timeEl.textContent = '';
     highscoresDivEl.setAttribute("style" , "display: none;");
    
 });
@@ -257,7 +271,6 @@ backBtnEl.addEventListener("click" , function() {
 clearBtnEl.addEventListener("click" , function() {
     window.localStorage.removeItem("high scores");
     highscoresListEl.innerHTML = "High Scores Cleared!";
-
 })
 
 
