@@ -1,6 +1,11 @@
 // Set of Questions
 var allQuestions = [
-    {
+    {  
+    question: "How do you create a function in JavaScript?",
+    answers: ["1- function = myFunction()" , "2- function myFunction()" , "3- function.myFunction()" , "4- myFunction()"],
+    correct: "2- function myFunction()",    },
+    
+    {  
     question: "Inside which HTML element do we put the JavaScript?",
     answers: ["1- <js>" , "2- <javascript>" , "3- <scripting" , "4- <script>"],
     correct: "4- <script>",    },
@@ -37,6 +42,7 @@ var secondCoiceAnsEl = document.getElementById("btn1");
 var thirdCoiceAnsEl = document.getElementById("btn2");
 var forthCoiceAnsEl = document.getElementById("btn3");
 var ansCheckEl = document.getElementById("show-ans-result");
+var lineEl = document.getElementById("line");
 
 var scoreSectionEl = document.getElementById("score-section");
 var scoreTitleEl = document.getElementById("score-title");
@@ -55,13 +61,13 @@ var questionNember = 0;
 var scoreResult;
 var questionIndex = 0;
 
-var totalTime = 91;
+var totalTime = 61;
 
 //function to start quiz and set timer
 function startQuiz() {
     
     questionIndex = 0;
-    totalTime = 90;
+    totalTime = 60;
     timeEl.textContent = totalTime;
     inputEl.textContent = "";
 
@@ -74,6 +80,7 @@ function startQuiz() {
         if(totalTime <= 0) {
 
             clearInterval(startTimer);
+            quizFinish();
         
             if (questionIndex < allQuestions.length - 1) {
                 quizFinish();
@@ -92,16 +99,21 @@ function showQuestions() {
 }
 
 function question() {
-
+    
     askQuestionEl.textContent = allQuestions[questionIndex].question;
     firstCoiceAnsEl.textContent = allQuestions[questionIndex].answers[0];
     secondCoiceAnsEl.textContent = allQuestions[questionIndex].answers[1];
     thirdCoiceAnsEl.textContent = allQuestions[questionIndex].answers[2];
     forthCoiceAnsEl.textContent = allQuestions[questionIndex].answers[3];
+    //setTimeout(function(){
+        lineEl.setAttribute("style" , "display: none;");
+        ansCheckEl.setAttribute("style" , "display: none;");
+    //},1000)
+    
 }
 //after each question check answer
 function checkAnswer (answer) {
-    var lineEl = document.getElementById("line");
+    
     lineEl.setAttribute("style" , "display: block;");
     ansCheckEl.setAttribute("style" , "display: block;"); 
 
@@ -125,11 +137,15 @@ function checkAnswer (answer) {
 
     if (questionIndex < allQuestions.length) {
         //Run the next question
-        question();
+        setTimeout(function(){
+            question()
+        }, 1000);
         
     } else {
         //End Quiz if no more questions
-        quizFinish();
+        setTimeout(function(){
+            quizFinish();
+        }, 1000);
     }
 }
 
@@ -182,6 +198,7 @@ function storeScores(event) {
 }
 
 //Function to show high scores
+var i = 0 
 function showScores() {
 
     quizInitialEl.setAttribute("style" , "display: none;");
@@ -200,7 +217,7 @@ function showScores() {
 
     var storedScores = JSON.parse(savedScores);
     
-    for(var i = 0 ; i < storedScores.length ; i ++) {
+    for(; i < storedScores.length ; i ++) {
 
         // console.log(storedScores[i].initials);
         var eachUserHighscoreEl = document.createElement("p");
