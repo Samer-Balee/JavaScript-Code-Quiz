@@ -6,7 +6,7 @@ Building a timed coding quiz with multiple-choice questions. This app will run i
 
 ## Instalation
 
-Please use the following link to view the web page after modification :[GitHub Pages](https://samer-balee.github.io/JavaScript-Code-Quiz/).
+Please use the following link to view the deployed app after modification :[Deployed App](https://samer-balee.github.io/JavaScript-Code-Quiz/).
 
 GitHub link : [Samer-Balee](https://github.com/Samer-Balee/JavaScript-Code-Quiz).
 
